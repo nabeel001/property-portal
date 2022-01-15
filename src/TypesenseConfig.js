@@ -2,9 +2,14 @@ import TypesenseInstantSearchAdapter from "typesense-instantsearch-adapter";
 
 const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
   server: {
-    apiKey: null,
+    apiKey: "karly2811",
     nodes: [
       //Enter details of your node
+      {
+        protocol: "https",
+        port: 443,
+        host: "homerce.ts.luxecraft.org",
+      },
     ],
   },
   additionalSearchParameters: {

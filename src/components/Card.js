@@ -1,5 +1,6 @@
 import React from "react";
-
+import priceFormatter from "../utils/PriceFormatter";
+import CustomHighlight from "./Highlight";
 const imagesDirectory = "images/";
 
 export default function Card({ hit }) {
@@ -13,10 +14,15 @@ export default function Card({ hit }) {
         />
 
         <div className="p-2 md:p-5">
+          {/* <p className="font-title text-left text-lg lg:text-2xl mb-3">
+            {hit.project_name}
+            <p className="text-sm">{hit.builder_name}</p>
+          </p> */}
           <p className="font-title text-left text-lg lg:text-2xl mb-3">
-            {/* {hit.project_name} */}
-            Project Name comes here
-            <p className="text-sm">Builder Name comes here</p>
+            <CustomHighlight attribute="project_name" hit={hit} />
+            <p className="text-sm">
+              <CustomHighlight attribute="builder_name" hit={hit} />
+            </p>
           </p>
 
           <div className="flex items-center justify-between">
@@ -27,12 +33,13 @@ export default function Card({ hit }) {
                 alt="Location Marker"
               />
               <div className="text-left sm:ml-5 text-xs xl:text-base font-body">
-                Street name
+                {hit.street_name}
                 <br />
-                City name
+                {hit.city_facet}
                 <br />
                 <p className="">
-                  420 ft<sup>2</sup> - 69 BHK
+                  {hit.sqrft}
+                  <sup>2</sup> - {hit.bhk_facet} BHK
                 </p>
               </div>
             </div>
@@ -43,8 +50,7 @@ export default function Card({ hit }) {
               </button>
 
               <p className="font-title text-lg lg:text-2xl mt-1">
-                {/* ₹{priceFormatter(hit.price)} */}
-                Price comes here
+                ₹{priceFormatter(hit.price)}
               </p>
             </div>
           </div>
